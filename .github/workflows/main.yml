@@ -2,7 +2,7 @@ name: Upload coverage to Codecov
 
 on:
   push:
-    branches: [main]  # Trigger bij push naar main
+    branches: [main]
 
 jobs:
   test:
@@ -19,11 +19,14 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./vraag 3
 
       - name: Run tests with coverage
         run: npm test
+        working-directory: ./vraag 3
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./vraag 3/coverage/lcov.info
